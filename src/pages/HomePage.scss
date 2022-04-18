@@ -1,0 +1,10 @@
+.homePage {
+  height: calc(100% - 100px);
+  overflow: hidden;
+
+  background: no-repeat center;
+  width: 100%;
+  background-image: url("../assets//green.jpeg");
+  background-size: cover;
+  background-position: center;
+}
