@@ -6,9 +6,11 @@ export default function Header() {
   return (
     <div className="header">
       <img alt="picture" style={{ width: 170 }} src={lucky} />
-      <button>Actors</button>
-      <button>Reviews</button>
-      <button>Log in</button>
+      <div className="header__buttons">
+        <button>Actors</button>
+        <button>Reviews</button>
+        <button>Log in</button>
+      </div>
     </div>
   );
 }

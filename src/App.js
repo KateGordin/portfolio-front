@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      Here will be main big and nice image
+      <h4>Here will be main big and nice image</h4>
     </div>
   );
 }
