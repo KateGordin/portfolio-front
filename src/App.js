@@ -6,6 +6,8 @@ import Actors from "./pages/Actors";
 import Reviews from "./pages/Reviews";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@reach/dialog/styles.css";
 
 function App() {
   return (
