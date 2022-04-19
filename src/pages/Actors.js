@@ -7,7 +7,7 @@ export default function Actors() {
   const actors = [
     {
       id: 1,
-      name: "spiderman",
+      name: "Spiderman",
       description: "very good",
       image:
         "https://upload.wikimedia.org/wikipedia/commons/9/90/Spiderman.JPG",
@@ -16,7 +16,7 @@ export default function Actors() {
 
     {
       id: 2,
-      name: "fyok",
+      name: "Fyok",
       description: "super",
       image:
         "https://ekomfort.ru/wa-data/public/shop/products/22/80/18022/images/18774/18774.970.jpg",
@@ -25,7 +25,7 @@ export default function Actors() {
 
     {
       id: 3,
-      name: "turtles",
+      name: "Ninja turtles",
       description: "nice",
       image:
         "https://cdn.mos.cms.futurecdn.net/khRipjVa7SEL5ndKogPHjj-1200-80.jpg",
@@ -34,7 +34,7 @@ export default function Actors() {
 
     {
       id: 4,
-      name: "princess",
+      name: "Princess",
       description: "cute",
       image:
         "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2015_05/870341/150130-latin-disney-princess-wide.jpg",
@@ -43,7 +43,7 @@ export default function Actors() {
 
     {
       id: 5,
-      name: "minion",
+      name: "Minion",
       description: "funny",
       image:
         "https://p4.wallpaperbetter.com/wallpaper/291/597/215/5c1c970d40286-wallpaper-preview.jpg",
@@ -52,7 +52,7 @@ export default function Actors() {
 
     {
       id: 6,
-      name: "santa",
+      name: "Santa",
       description: "magic",
       image:
         "https://images.theconversation.com/files/302306/original/file-20191118-169393-r78x4o.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop",

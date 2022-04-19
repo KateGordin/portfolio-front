@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@reach/dialog/styles.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (

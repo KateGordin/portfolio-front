@@ -2,6 +2,7 @@ import React from "react";
 import lucky from "../assets/lucky-green.jpeg";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -19,14 +20,18 @@ export default function Header() {
         <NavLink end to={"/actors"}>
           <button>Actors</button>
         </NavLink>
-
         <NavLink end to={"/reviews"}>
           <button>Reviews</button>
         </NavLink>
-
         <NavLink end to={"/login"}>
           <button>Log in</button>
         </NavLink>
+
+        <div className="header__icon">
+          <NavLink end to={"/cart"}>
+            <FaShoppingCart size={27} />
+          </NavLink>
+        </div>
       </div>
     </div>
   );

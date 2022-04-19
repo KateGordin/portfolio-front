@@ -18,4 +18,12 @@
     align-items: center;
     height: 100px;
   }
+
+  &__icon {
+    color: yellowgreen;
+  }
+
+  &__icon:hover {
+    color: white;
+  }
 }
