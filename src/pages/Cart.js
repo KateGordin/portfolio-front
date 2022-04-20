@@ -47,8 +47,7 @@ export default function Cart() {
             <th>Actors</th>
             <th>Duration</th>
             <th>Price</th>
-            <th>Date</th>
-            <th>Time</th>
+            <th>Date and Time</th>
           </tr>
         </thead>
 
@@ -59,8 +58,7 @@ export default function Cart() {
               <td>{oneItem.name}</td>
               <td>1 hour</td>
               <td>{oneItem.price} €</td>
-              <td>6 of May 2022</td>
-              <td>17:00</td>
+              <td>6 of May 2022, 17:00</td>
             </tr>
           ))}
         </tbody>
