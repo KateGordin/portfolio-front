@@ -3,8 +3,13 @@ import { Table } from "react-bootstrap";
 import { useState } from "react";
 import "./Cart.scss";
 import DatePicker from "react-datepicker";
+import { selectOrders } from "../store/orders/selectors";
+import { getAllActors } from "../store/actors/actions";
+import { addItemToCart } from "../store/orders/actions";
+import { useDispatch } from "react-redux";
 
 export default function Cart() {
+  const dispatch = useDispatch();
   const cart = [
     {
       id: 1,
