@@ -3,8 +3,16 @@ import lucky from "../assets/lucky-green.jpeg";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { selectToken } from "../store/user/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../store/user/actions";
 
 export default function Header() {
+  const token = useSelector(selectToken);
+  const dispatch = useDispatch();
+
+  const logOutButton = () => dispatch(logOut());
+
   return (
     <div className="header">
       <NavLink end to={"/"}>
@@ -23,9 +31,14 @@ export default function Header() {
         <NavLink end to={"/reviews"}>
           <button>Reviews</button>
         </NavLink>
-        <NavLink end to={"/login"}>
-          <button>Log in</button>
-        </NavLink>
+
+        {token ? (
+          <button onClick={logOutButton}>Log out</button>
+        ) : (
+          <NavLink end to={"/login"}>
+            <button>Log in</button>{" "}
+          </NavLink>
+        )}
 
         <div className="header__icon">
           <NavLink end to={"/cart"}>

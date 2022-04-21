@@ -9,8 +9,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("l@l.com");
+  const [password, setPassword] = useState("liam");
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const navigate = useNavigate();
