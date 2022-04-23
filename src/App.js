@@ -9,6 +9,8 @@ import Cart from "./pages/Cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@reach/dialog/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-notifications/lib/notifications.css";
+import { NotificationContainer } from "react-notifications";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <NotificationContainer />
     </div>
   );
 }

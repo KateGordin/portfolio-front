@@ -10,6 +10,7 @@ import { selectCart } from "../store/orders/selectors";
 import { deleteOrderItem } from "../store/orders/actions";
 import { submitOrder } from "../store/orders/actions";
 import { useNavigate } from "react-router-dom";
+import { NotificationManager } from "react-notifications";
 
 export default function Cart() {
   const [myEventName, setEventName] = useState(" ");
@@ -33,6 +34,10 @@ export default function Cart() {
     dispatch(await submitOrder(cart.id, myEventName));
     setEventName("");
     navigate("/");
+    NotificationManager.success(
+      "Check your e-mail",
+      "Order successfully submitted"
+    );
   };
 
   useEffect(() => {

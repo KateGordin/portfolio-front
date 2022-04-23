@@ -1,4 +1,5 @@
 import axios from "axios";
+import { NotificationManager } from "react-notifications";
 
 export const restApi = axios.create({
   baseURL: "http://localhost:4000",
@@ -10,3 +11,15 @@ restApi.interceptors.request.use(function (config) {
   config.headers.Authorization = token ? `Bearer ${token}` : "";
   return config;
 });
+
+// restApi.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response.status === 401) {
+//       NotificationManager.error("Please log-in again", "Error");
+//     } else {
+//       NotificationManager.error("An error occured", "Error");
+//     }
+//     throw error;
+//   }
+// );

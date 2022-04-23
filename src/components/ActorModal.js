@@ -2,10 +2,14 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../store/orders/actions";
+import { NotificationManager } from "react-notifications";
 
 export default function ActorModal({ actor, onClose }) {
   const dispatch = useDispatch();
-  const addMyOneItem = async () => dispatch(await addItemToCart(actor));
+  const addMyOneItem = async () => {
+    dispatch(await addItemToCart(actor));
+    NotificationManager.success("Actor was added to the cart", "Success");
+  };
 
   return (
     <Modal show={true} size="lg" centered>
