@@ -9,9 +9,11 @@ import { fetchOrder } from "../store/orders/actions";
 import { selectCart } from "../store/orders/selectors";
 import { deleteOrderItem } from "../store/orders/actions";
 import { submitOrder } from "../store/orders/actions";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [myEventName, setEventName] = useState(" ");
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
@@ -30,6 +32,7 @@ export default function Cart() {
   const submitOrderAndClearState = async () => {
     dispatch(await submitOrder(cart.id, myEventName));
     setEventName("");
+    navigate("/");
   };
 
   useEffect(() => {
