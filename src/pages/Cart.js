@@ -1,45 +1,42 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Cart.scss";
 import DatePicker from "react-datepicker";
 import { selectOrders } from "../store/orders/selectors";
-import { getAllActors } from "../store/actors/actions";
-import { addItemToCart } from "../store/orders/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrder } from "../store/orders/actions";
+import { selectCart } from "../store/orders/selectors";
+import { deleteOrderItem } from "../store/orders/actions";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const cart = [
-    {
-      id: 1,
-      name: "spiderman",
-      description: "very good",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/90/Spiderman.JPG",
-      price: 150,
-    },
+  const cart = useSelector(selectCart);
+  console.log("cart", cart);
+  const fetchMyOrderItems = async () => {
+    const items = dispatch(await fetchOrder());
+    console.log("items", items);
+  };
 
-    {
-      id: 2,
-      name: "fyok",
-      description: "super",
-      image:
-        "https://ekomfort.ru/wa-data/public/shop/products/22/80/18022/images/18774/18774.970.jpg",
-      price: 100,
-    },
+  //delete one order item from cart
+  const deleteMyOrderItem = async (id) => {
+    dispatch(await deleteOrderItem(id));
+  };
 
-    {
-      id: 3,
-      name: "turtles",
-      description: "nice",
-      image:
-        "https://cdn.mos.cms.futurecdn.net/khRipjVa7SEL5ndKogPHjj-1200-80.jpg",
-      price: 300,
-    },
-  ];
+  useEffect(() => {
+    fetchMyOrderItems();
+  }, []);
 
-  const [startDate, setStartDate] = useState(new Date());
+  // const [orderItem, setOrderItem] = useState({
+  //   Actor: " ",
+  //   Duration: "1 hour",
+  //   Price: null,
+  //   DateTime: " ",
+  // });
+
+  const [orderItems, setOrderItems] = useState([]);
+
+  // const [startDate, setStartDate] = useState(new Date());
 
   return (
     <div className="container">
@@ -53,33 +50,40 @@ export default function Cart() {
             <th>Duration</th>
             <th>Price</th>
             <th>Date and Time</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          {cart.map((oneItem, index) => (
-            <tr>
-              <td>{index + 1}</td>
-              <td>{oneItem.name}</td>
-              <td>1 hour</td>
-              <td>{oneItem.price} €</td>
-              <td>6 of May 2022, 17:00</td>
-            </tr>
-          ))}
+          {cart &&
+            cart.orderItems.map((orderItem, index) => (
+              <tr>
+                <td>{index + 1}</td>
+                <td>{orderItem.actor.name}</td>
+                <td>1 hour</td>
+                <td>{orderItem.actor.description} €</td>
+                <td>6 of May 2022, 17:00</td>
+                <td>
+                  <button onClick={() => deleteMyOrderItem(orderItem.id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </Table>
 
-      <DatePicker
+      {/* <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
-      />
+      /> */}
 
       <div>
         <label>Event Name</label>
         <input type="text" />
       </div>
 
-      <button>Order</button>
+      {/* <button onClick={() =>  dispatch(orderItems(orderItems)))}>Order</button> */}
     </div>
   );
 }

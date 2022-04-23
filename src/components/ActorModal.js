@@ -1,13 +1,9 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItemToCart } from "../store/orders/actions";
-import { selectOrders } from "../store/orders/selectors";
-import { selectActors } from "../store/actors/selectors";
 
 export default function ActorModal({ actor, onClose }) {
-  const order = useSelector(selectOrders);
-  // const actor = useSelector(selectActors);
   const dispatch = useDispatch();
   const addMyOneItem = async () => dispatch(await addItemToCart(actor));
 
