@@ -8,8 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchOrder } from "../store/orders/actions";
 import { selectCart } from "../store/orders/selectors";
 import { deleteOrderItem } from "../store/orders/actions";
+import { submitOrder } from "../store/orders/actions";
 
 export default function Cart() {
+  const [myEventName, setEventName] = useState(" ");
+
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
   console.log("cart", cart);
@@ -23,18 +26,15 @@ export default function Cart() {
     dispatch(await deleteOrderItem(id));
   };
 
+  //submit and clear the state
+  const submitOrderAndClearState = async () => {
+    dispatch(await submitOrder(cart.id, myEventName));
+    setEventName("");
+  };
+
   useEffect(() => {
     fetchMyOrderItems();
   }, []);
-
-  // const [orderItem, setOrderItem] = useState({
-  //   Actor: " ",
-  //   Duration: "1 hour",
-  //   Price: null,
-  //   DateTime: " ",
-  // });
-
-  const [orderItems, setOrderItems] = useState([]);
 
   // const [startDate, setStartDate] = useState(new Date());
 
@@ -80,10 +80,14 @@ export default function Cart() {
 
       <div>
         <label>Event Name</label>
-        <input type="text" />
+        <input
+          type="text"
+          value={myEventName}
+          onInput={(e) => setEventName(e.target.value)}
+        />
       </div>
 
-      {/* <button onClick={() =>  dispatch(orderItems(orderItems)))}>Order</button> */}
+      <button onClick={submitOrderAndClearState}>Order</button>
     </div>
   );
 }

@@ -31,9 +31,17 @@ export const fetchOrder = async () => {
 //delete items from cart
 export const deleteOrderItem = async (id) => {
   const res = await restApi.delete(`/order/deleteOrderItem/${id}`);
-  console.log("RRRRRRRRRRRres", res);
   return {
     type: "deleteOrderFromCart",
     payload: id,
+  };
+};
+
+//update order status and create eventName
+export const submitOrder = async (id, eventName) => {
+  const res = await restApi.patch(`/order/submit`, { id, eventName });
+  console.log("res oooooordeeeerrrrrrr", res);
+  return {
+    type: "submitOrder",
   };
 };

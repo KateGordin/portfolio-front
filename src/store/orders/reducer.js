@@ -31,6 +31,12 @@ export default function reducer(state = initialState, action) {
         },
       };
 
+    case "submitOrder":
+      return {
+        ...state,
+        cart: null,
+      };
+
     default:
       return state;
   }
