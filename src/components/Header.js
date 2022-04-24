@@ -6,10 +6,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { selectToken } from "../store/user/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../store/user/actions";
+import { selectCart } from "../store/orders/selectors";
 
 export default function Header() {
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
+
+  const cart = useSelector(selectCart);
 
   const logOutButton = () => dispatch(logOut());
 
@@ -44,6 +47,9 @@ export default function Header() {
           <NavLink end to={"/cart"}>
             <FaShoppingCart size={27} />
           </NavLink>
+          <span style={{ fontWeight: "bold", color: "white" }}>
+            {cart && cart.orderItems.length}
+          </span>
         </div>
       </div>
     </div>

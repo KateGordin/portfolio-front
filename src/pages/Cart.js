@@ -18,10 +18,8 @@ export default function Cart() {
 
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
-  console.log("cart", cart);
   const fetchMyOrderItems = async () => {
-    const items = dispatch(await fetchOrder());
-    console.log("items", items);
+    dispatch(fetchOrder);
   };
 
   //delete one order item from cart
@@ -57,7 +55,6 @@ export default function Cart() {
             <th>Actors</th>
             <th>Duration</th>
             <th>Price</th>
-            <th>Date and Time</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -65,12 +62,11 @@ export default function Cart() {
         <tbody>
           {cart &&
             cart.orderItems.map((orderItem, index) => (
-              <tr>
+              <tr key={orderItem.id}>
                 <td>{index + 1}</td>
                 <td>{orderItem.actor.name}</td>
                 <td>1 hour</td>
                 <td>{orderItem.actor.description} €</td>
-                <td>6 of May 2022, 17:00</td>
                 <td>
                   <button onClick={() => deleteMyOrderItem(orderItem.id)}>
                     Delete
