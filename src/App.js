@@ -11,8 +11,16 @@ import "@reach/dialog/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
+import { useDispatch } from "react-redux";
+import { getLoggedInUser } from "./store/user/actions";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLoggedInUser);
+  }, []);
   return (
     <div className="App">
       <Header />

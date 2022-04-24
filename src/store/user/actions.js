@@ -1,4 +1,5 @@
 import axios from "axios";
+import { restApi } from "../../apis/calls";
 import { selectToken } from "./selectors";
 import {
   appLoading,
@@ -63,6 +64,7 @@ export const login = (email, password) => {
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
       dispatch(appDoneLoading());
+      dispatch(getLoggedInUser);
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -107,4 +109,18 @@ export const getUserWithStoredToken = () => {
       dispatch(appDoneLoading());
     }
   };
+};
+
+//thunk function for logged-in uder and taking /me
+export const getLoggedInUser = async (dispatch) => {
+  const res = await restApi.get("/auth/me");
+  console.log("res !!!!!!!!!!! ", res);
+  dispatch({
+    type: "setUser",
+    payload: res.data.user,
+  });
+  dispatch({
+    type: "setOrderInCart",
+    payload: res.data.cart,
+  });
 };

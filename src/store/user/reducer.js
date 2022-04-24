@@ -6,7 +6,7 @@ const initialState = {
   email: null,
 };
 
-export default (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -19,7 +19,10 @@ export default (state = initialState, action) => {
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
 
+    case "setUser":
+      return { ...state, ...action.payload };
+
     default:
       return state;
   }
-};
+}
