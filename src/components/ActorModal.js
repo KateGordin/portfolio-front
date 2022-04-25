@@ -12,7 +12,7 @@ export default function ActorModal({ actor, onClose }) {
   };
 
   return (
-    <Modal show={true} size="lg" centered>
+    <Modal animation={false} show={true} size="lg" centered>
       <Modal.Header>
         <h3>{actor.name}</h3>
       </Modal.Header>

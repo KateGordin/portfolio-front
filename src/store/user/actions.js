@@ -1,4 +1,3 @@
-import axios from "axios";
 import { restApi } from "../../apis/calls";
 import { selectToken } from "./selectors";
 import {
@@ -30,7 +29,7 @@ export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      const response = await axios.post(`http://localhost:4000/auth/signup`, {
+      const response = await restApi.post("/auth/signup", {
         name,
         email,
         password,
@@ -56,15 +55,16 @@ export const login = (email, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      const response = await axios.post(`http://localhost:4000/auth/login`, {
+      const response = await restApi.post("/auth/login", {
         email,
         password,
       });
 
       dispatch(loginSuccess(response.data));
+      dispatch(getUserWithStoredToken());
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
       dispatch(appDoneLoading());
-      dispatch(getLoggedInUser);
+      dispatch(getUserWithStoredToken());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -90,12 +90,17 @@ export const getUserWithStoredToken = () => {
     try {
       // if we do have a token,
       // check wether it is still valid or if it is expired
-      const response = await axios.get(`http://localhost:4000/auth/me`, {
-        headers: { Authorization: `Bearer ${token}` },
+      const res = await restApi.get("/auth/me");
+      dispatch({
+        type: "setUser",
+        payload: res.data.user,
       });
-
+      dispatch({
+        type: "setOrderInCart",
+        payload: res.data.cart,
+      });
       // token is still valid
-      dispatch(tokenStillValid(response.data));
+      dispatch(tokenStillValid(res.data));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -109,18 +114,4 @@ export const getUserWithStoredToken = () => {
       dispatch(appDoneLoading());
     }
   };
-};
-
-//thunk function for logged-in uder and taking /me
-export const getLoggedInUser = async (dispatch) => {
-  const res = await restApi.get("/auth/me");
-  console.log("res !!!!!!!!!!! ", res);
-  dispatch({
-    type: "setUser",
-    payload: res.data.user,
-  });
-  dispatch({
-    type: "setOrderInCart",
-    payload: res.data.cart,
-  });
 };
