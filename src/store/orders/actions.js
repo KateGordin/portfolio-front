@@ -40,9 +40,13 @@ export const deleteOrderItem = (id) => {
 };
 
 //update order status and create eventName
-export const submitOrder = (id, eventName) => {
+export const submitOrder = (id, eventName, textInEmail) => {
   return async function (dispatch) {
-    const res = await restApi.patch(`/order/submit`, { id, eventName });
+    const res = await restApi.patch(`/order/submit`, {
+      id,
+      eventName,
+      textInEmail,
+    });
     // console.log("res oooooordeeeerrrrrrr", res);
     dispatch({
       type: "submitOrder",

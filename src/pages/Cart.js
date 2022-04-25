@@ -3,7 +3,6 @@ import { Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./Cart.scss";
 import DatePicker from "react-datepicker";
-import { selectOrders } from "../store/orders/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrder } from "../store/orders/actions";
 import { selectCart } from "../store/orders/selectors";
@@ -15,6 +14,9 @@ import { NotificationManager } from "react-notifications";
 export default function Cart() {
   const [myEventName, setEventName] = useState(" ");
   const navigate = useNavigate();
+
+  //my text in email to actors
+  const [textInEmail, setTextInEmail] = useState(" ");
 
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
@@ -29,11 +31,12 @@ export default function Cart() {
 
   //submit and clear the state
   const submitOrderAndClearState = async () => {
-    dispatch(await submitOrder(cart.id, myEventName));
+    dispatch(await submitOrder(cart.id, myEventName, textInEmail));
     setEventName("");
+    setTextInEmail("");
     navigate("/");
     NotificationManager.success(
-      "Check your e-mail",
+      "We will answer you soon",
       "Order successfully submitted"
     );
   };
@@ -83,11 +86,18 @@ export default function Cart() {
       /> */}
 
       <div>
-        <label>Event Name</label>
+        <label>Event Name: </label>
         <input
           type="text"
           value={myEventName}
           onInput={(e) => setEventName(e.target.value)}
+        />
+        <br></br>
+        <label>Add your preferences: </label>
+        <input
+          type="text"
+          value={textInEmail}
+          onInput={(e) => setTextInEmail(e.target.value)}
         />
       </div>
 
