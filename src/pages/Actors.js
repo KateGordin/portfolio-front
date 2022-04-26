@@ -10,7 +10,7 @@ export default function Actors() {
   const dispatch = useDispatch();
   const actors = useSelector(selectActors);
 
-  //get all artworks (function from actions)
+  //get all actors (function from actions)
   const getActors = async () => dispatch(await getAllActors());
 
   useEffect(() => {

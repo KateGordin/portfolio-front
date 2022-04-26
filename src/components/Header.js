@@ -1,7 +1,7 @@
 import React from "react";
 import lucky from "../assets/lucky-green.jpeg";
 import "./Header.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { selectToken } from "../store/user/selectors";
 import { useSelector, useDispatch } from "react-redux";
@@ -36,21 +36,23 @@ export default function Header() {
         </NavLink>
 
         {token ? (
-          <button onClick={logOutButton}>Log out</button>
-        ) : (
-          <NavLink end to={"/login"}>
-            <button>Log in</button>{" "}
-          </NavLink>
-        )}
+          <div>
+            <button onClick={logOutButton}>Log out</button>
 
-        <div className="header__icon">
-          <NavLink end to={"/cart"}>
-            <FaShoppingCart size={27} />
-          </NavLink>
-          <span style={{ fontWeight: "bold", color: "white" }}>
-            {cart && cart.orderItems.length}
-          </span>
-        </div>
+            <NavLink end to={"/cart"}>
+              <FaShoppingCart size={27} />
+            </NavLink>
+            <span style={{ fontWeight: "bold", color: "white" }}>
+              {cart && cart.orderItems.length}
+            </span>
+          </div>
+        ) : (
+          <>
+            <NavLink end to={"/login"}>
+              <button>Log in</button>
+            </NavLink>
+          </>
+        )}
       </div>
     </div>
   );
