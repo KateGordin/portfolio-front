@@ -43,7 +43,7 @@ export default function Header() {
               <FaShoppingCart size={27} />
             </NavLink>
             <span style={{ fontWeight: "bold", color: "white" }}>
-              {cart && cart.orderItems.length}
+              {cart?.orderItems.length ? cart.orderItems.length : ""}
             </span>
           </div>
         ) : (
