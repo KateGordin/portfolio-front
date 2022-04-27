@@ -4,7 +4,15 @@
 
   background: no-repeat center;
   width: 100%;
-  background-image: url("../assets//green.jpeg");
+  background-image: url("../assets/balloons.jpeg");
   background-size: cover;
   background-position: center;
+
+  p {
+    color: white;
+    margin: 300px 0 300px 180px;
+    font-weight: bold;
+    font-size: 130%;
+    font: cursive;
+  }
 }

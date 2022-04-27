@@ -86,7 +86,10 @@ export default function Cart() {
                   <td>1 hour</td>
                   <td>{orderItem.actor.price} €</td>
                   <td>
-                    <button onClick={() => deleteMyOrderItem(orderItem.id)}>
+                    <button
+                      className="btn-primary"
+                      onClick={() => deleteMyOrderItem(orderItem.id)}
+                    >
                       Delete
                     </button>
                   </td>
@@ -119,7 +122,9 @@ export default function Cart() {
           />
         </div>
 
-        <button onClick={submitOrderAndClearState}>Order</button>
+        <button className="btn-green" onClick={submitOrderAndClearState}>
+          Order
+        </button>
       </div>
     </>
   );

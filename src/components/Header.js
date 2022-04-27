@@ -1,5 +1,5 @@
 import React from "react";
-import lucky from "../assets/lucky-green.jpeg";
+import lucky from "../assets/lucky5.png";
 import "./Header.scss";
 import { NavLink, Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
@@ -54,8 +54,7 @@ export default function Header() {
               <NavLink end to={"/cart"}>
                 <FaShoppingCart size={27} />
               </NavLink>
-              <span style={{ fontWeight: "bold", color: "white" }}>
-                {" "}
+              <span style={{ fontWeight: "bold", color: "black" }}>
                 {cart?.orderItems.length ? cart.orderItems.length : ""}
               </span>
             </>
