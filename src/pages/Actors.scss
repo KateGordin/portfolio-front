@@ -13,6 +13,8 @@
 
 .cards {
   margin: 40px;
+  overflow: scroll;
+  height: calc(100% - 100px);
 
   &__one {
     margin-bottom: 30px;
