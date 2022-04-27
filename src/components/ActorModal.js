@@ -6,6 +6,7 @@ import { selectToken } from "../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import "./ActorModal.scss";
 
 export default function ActorModal({ actor, onClose }) {
   const token = useSelector(selectToken);
@@ -43,7 +44,9 @@ export default function ActorModal({ actor, onClose }) {
               Please <NavLink to="/login">login</NavLink> first
             </span>
           )}
-          <button onClick={addMyOneItem}>Add to cart</button>
+          <button className="btn-green" onClick={addMyOneItem}>
+            Add to cart
+          </button>
           <Button onClick={onClose}>Close</Button>
         </Modal.Footer>
       </Modal>

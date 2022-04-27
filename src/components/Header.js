@@ -18,41 +18,49 @@ export default function Header() {
 
   return (
     <div className="header">
-      <NavLink end to={"/"}>
-        <img
-          className="header__logo"
-          alt="picture"
-          style={{ width: 170 }}
-          src={lucky}
-        />
-      </NavLink>
-
-      <div className="header__buttons">
-        <NavLink end to={"/actors"}>
-          <button>Actors</button>
+      <div className="header__nav">
+        <NavLink end to={"/"}>
+          <img
+            className="header__logo"
+            alt="logo"
+            style={{ width: 170 }}
+            src={lucky}
+          />
         </NavLink>
-        <NavLink end to={"/reviews"}>
-          <button>Reviews</button>
-        </NavLink>
-
-        {token ? (
-          <div>
-            <button onClick={logOutButton}>Log out</button>
-
-            <NavLink end to={"/cart"}>
-              <FaShoppingCart size={27} />
-            </NavLink>
-            <span style={{ fontWeight: "bold", color: "white" }}>
-              {cart?.orderItems.length ? cart.orderItems.length : ""}
-            </span>
-          </div>
-        ) : (
-          <>
+        <div className="header__buttons">
+          <NavLink end to={"/actors"}>
+            <button className="btn-green">Actors</button>
+          </NavLink>
+          <NavLink end to={"/reviews"}>
+            <button className="btn-green">Reviews</button>
+          </NavLink>
+        </div>
+      </div>
+      <div className="header__auth">
+        <div className="header__auth-buttons">
+          {token ? (
+            <button className="btn-primary" onClick={logOutButton}>
+              Log out
+            </button>
+          ) : (
             <NavLink end to={"/login"}>
-              <button>Log in</button>
+              <button className="btn-primary">Log in</button>
             </NavLink>
-          </>
-        )}
+          )}
+        </div>
+        <div className="header__cart">
+          {token && (
+            <>
+              <NavLink end to={"/cart"}>
+                <FaShoppingCart size={27} />
+              </NavLink>
+              <span style={{ fontWeight: "bold", color: "white" }}>
+                {" "}
+                {cart?.orderItems.length ? cart.orderItems.length : ""}
+              </span>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

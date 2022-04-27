@@ -1,8 +1,29 @@
 .actor {
-  height: 370px;
+  height: 330px;
   text-align: center;
 
   img {
     align-self: center;
+  }
+
+  h3 {
+    margin: 24px 0;
+  }
+}
+
+.cards {
+  margin: 40px;
+
+  &__one {
+    margin-bottom: 30px;
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    .card {
+      border: none;
+    }
+  }
+
+  &__one:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }

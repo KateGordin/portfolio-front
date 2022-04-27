@@ -22,14 +22,17 @@ export default function Actors() {
   const onClose = () => setSelectedActor(null);
 
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container cards">
+      <div className="row ">
         {actors.map((actor) => (
-          <div className="col-4" key={actor.id}>
-            <div className="actor card m-1">
+          <div
+            className="col-4 cards__one"
+            key={actor.id}
+            onClick={() => onOpen(actor)}
+          >
+            <div className="actor card m-1 col text-center">
               <h3>{actor.name}</h3>
-              <img alt="image" src={actor.image} width={300} />
-              <button onClick={() => onOpen(actor)}>Details</button>
+              <img alt="actor" src={actor.image} width={300} />
             </div>
           </div>
         ))}
