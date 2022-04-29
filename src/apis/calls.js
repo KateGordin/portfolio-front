@@ -2,7 +2,7 @@ import axios from "axios";
 import { NotificationManager } from "react-notifications";
 
 export const restApi = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: "https://lucky-party.herokuapp.com",
   // baseURL: process.env.APP_API_BASE_URL,
 });
 
