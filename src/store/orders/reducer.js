@@ -1,6 +1,8 @@
 const initialState = {
   orders: [],
-  cart: null,
+  cart: {
+    orderItems: [],
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -34,7 +36,9 @@ export default function reducer(state = initialState, action) {
     case "submitOrder":
       return {
         ...state,
-        cart: null,
+        cart: {
+          orderItems: [],
+        },
       };
 
     default:
