@@ -7,4 +7,25 @@
   background-image: url("../assets/blue.jpeg");
   background-size: cover;
   background-position: center;
+
+  h4 {
+    font-weight: 900;
+    color: rgb(68, 126, 211);
+    border: 5px white dotted;
+    width: 50%;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+  }
+
+  h3 {
+    margin: 30px;
+    font-weight: 900;
+    color: rgb(125, 230, 21);
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
+    width: 50%;
+  }
 }
