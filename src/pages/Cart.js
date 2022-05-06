@@ -10,6 +10,7 @@ import { submitOrder } from "../store/orders/actions";
 import { useNavigate } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import { selectToken } from "../store/user/selectors";
+import { getUserWithStoredToken } from "../store/user/actions";
 
 export default function Cart() {
   const token = useSelector(selectToken);
@@ -41,6 +42,7 @@ export default function Cart() {
       "We will answer you soon",
       "🥳 Order successfully submitted "
     );
+    dispatch(getUserWithStoredToken());
   };
 
   useEffect(() => {
