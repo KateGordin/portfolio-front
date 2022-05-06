@@ -114,7 +114,7 @@ export default function Cart() {
             onInput={(e) => setEventName(e.target.value)}
           />
           <br></br>
-          <label>Add your preferences: </label>
+          <label>Add time/date and your preferences: </label>
           <input
             type="text"
             value={textInEmail}
