@@ -6,6 +6,7 @@ import Actors from "./pages/Actors";
 import Reviews from "./pages/Reviews";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import SignUp from "./pages/SignUp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@reach/dialog/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/actors" element={<Actors />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
       <NotificationContainer />
