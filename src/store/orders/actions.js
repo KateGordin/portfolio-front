@@ -9,7 +9,7 @@ export const addItemToCart = (actor) => {
     const res = await restApi.post(`/order/addOrderItem`, {
       actorId: actor.id,
     });
-    console.log("ressssssss data", res.data);
+    // console.log("ressssssss data", res.data);
 
     dispatch({
       type: "addItemToCart",
