@@ -11,7 +11,7 @@ export default function Actors() {
   const actors = useSelector(selectActors);
 
   //get all actors (function from actions)
-  const getActors = async () => dispatch(await getAllActors());
+  const getActors = async () => dispatch(getAllActors);
 
   useEffect(() => {
     getActors();

@@ -1,11 +1,10 @@
-import axios from "axios";
+import { restApi } from "../../apis/calls";
 
-//get artworks from backend
-export const getAllActors = async () => {
-  const response = await axios.get("https://lucky-party.herokuapp.com/actor");
-
-  return {
+//get actors from backend
+export const getAllActors = async (dispatch) => {
+  const response = await restApi.get("/actor");
+  dispatch({
     type: "setAllActors",
     payload: response.data,
-  };
+  });
 };
