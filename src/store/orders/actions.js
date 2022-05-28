@@ -1,6 +1,11 @@
 import axios from "axios";
 import { restApi } from "../../apis/calls";
 
+export const CLEAR_CART = "clearCart";
+export const DELETE_ORDER_FROM_CART = "deleteOrderFromCart";
+export const SET_ORDER_IN_CART = "setOrderInCart";
+export const ADD_ITEM_TO_CART = "addItemToCart";
+
 //create an oredrItem
 export const addItemToCart = (actor) => {
   return async function (dispatch) {
@@ -9,10 +14,10 @@ export const addItemToCart = (actor) => {
     const res = await restApi.post(`/order/addOrderItem`, {
       actorId: actor.id,
     });
-    // console.log("ressssssss data", res.data);
+    // console.log("ressssssss data from action", res.data);
 
     dispatch({
-      type: "addItemToCart",
+      type: ADD_ITEM_TO_CART,
       payload: res.data,
     });
   };
@@ -23,7 +28,7 @@ export const fetchOrder = async (dispatch) => {
   const res = await restApi.get(`/order/getDraftOrder`);
   // console.log("res fetch orders", res);
   dispatch({
-    type: "setOrderInCart",
+    type: SET_ORDER_IN_CART,
     payload: res.data,
   });
 };
@@ -33,7 +38,7 @@ export const deleteOrderItem = (id) => {
   return async function (dispatch) {
     await restApi.delete(`/order/deleteOrderItem/${id}`);
     dispatch({
-      type: "deleteOrderFromCart",
+      type: DELETE_ORDER_FROM_CART,
       payload: id,
     });
   };
@@ -49,7 +54,7 @@ export const submitOrder = (id, eventName, textInEmail) => {
     });
     // console.log("res oooooordeeeerrrrrrr", res);
     dispatch({
-      type: "submitOrder",
+      type: CLEAR_CART,
     });
   };
 };

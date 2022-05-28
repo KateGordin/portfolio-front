@@ -1,4 +1,4 @@
-import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from "./actions";
+import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID, SET_USER } from "./actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action) {
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
 
-    case "setUser":
+    case SET_USER:
       return { ...state, ...action.payload };
 
     default:

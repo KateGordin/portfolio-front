@@ -10,6 +10,9 @@ import {
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const CLEAR_CART = "clearCart";
+export const SET_USER = "setUser";
+export const SET_ORDER_IN_CART = "setOrderInCart";
 
 const loginSuccess = (userWithToken) => {
   return {
@@ -23,7 +26,13 @@ const tokenStillValid = (userWithoutToken) => ({
   payload: userWithoutToken,
 });
 
-export const logOut = () => ({ type: LOG_OUT });
+export const logOut = async (dispatch) => {
+  dispatch({ type: LOG_OUT });
+  console.log("first");
+  dispatch({
+    type: CLEAR_CART,
+  });
+};
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
@@ -92,11 +101,11 @@ export const getUserWithStoredToken = () => {
       // check wether it is still valid or if it is expired
       const res = await restApi.get("/auth/me");
       dispatch({
-        type: "setUser",
+        type: SET_USER,
         payload: res.data.user,
       });
       dispatch({
-        type: "setOrderInCart",
+        type: SET_ORDER_IN_CART,
         payload: res.data.cart,
       });
       // token is still valid

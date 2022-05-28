@@ -14,7 +14,7 @@ export default function Header() {
 
   const cart = useSelector(selectCart);
 
-  const logOutButton = () => dispatch(logOut());
+  const logOutButton = () => dispatch(logOut);
 
   return (
     <div className="header">
