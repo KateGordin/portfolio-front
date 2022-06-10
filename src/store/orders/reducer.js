@@ -19,6 +19,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         cart: {
           ...state.cart,
+          id: action.payload.orderId,
           orderItems: [...state.cart.orderItems, action.payload],
         },
       };
