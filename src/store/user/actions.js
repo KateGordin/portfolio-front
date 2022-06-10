@@ -104,10 +104,16 @@ export const getUserWithStoredToken = () => {
         type: SET_USER,
         payload: res.data.user,
       });
-      dispatch({
-        type: SET_ORDER_IN_CART,
-        payload: res.data.cart,
-      });
+      if (!res.data.cart) {
+        dispatch({
+          type: CLEAR_CART,
+        });
+      } else {
+        dispatch({
+          type: SET_ORDER_IN_CART,
+          payload: res.data.cart,
+        });
+      }
       // token is still valid
       dispatch(tokenStillValid(res.data));
       dispatch(appDoneLoading());
