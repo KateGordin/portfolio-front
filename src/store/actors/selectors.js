@@ -1,4 +1,4 @@
 export const selectActors = (state) => {
   // console.log("state", state);
-  return state.actor.actors;
+  return state.actor.filteredActors;
 };
