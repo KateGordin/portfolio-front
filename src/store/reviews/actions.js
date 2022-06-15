@@ -16,17 +16,12 @@ export const getAllReviews = (review) => {
 };
 
 //update review for user
-export const updateReview = (review) => {
-  return async function (dispatch, getState) {
-    const state = getState();
-    console.log("state", state);
-    // const id = user.id;
-    // const res = await restApi.update(`/review/${id}`, {
-    //   review,
-    // });
-    // console.log("res oooooordeeeerrrrrrr", res);
-    dispatch({
-      type: UPDATE_REVIEW,
-    });
-  };
+export const updateReview = (review) => async (dispatch, getState) => {
+  const res = await restApi.patch(`/review`, {
+    review,
+  });
+  console.log("res oooooordeeeerrrrrrr", res);
+  dispatch({
+    type: UPDATE_REVIEW,
+  });
 };

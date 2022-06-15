@@ -28,7 +28,6 @@ const tokenStillValid = (userWithoutToken) => ({
 
 export const logOut = async (dispatch) => {
   dispatch({ type: LOG_OUT });
-  console.log("first");
   dispatch({
     type: CLEAR_CART,
   });
