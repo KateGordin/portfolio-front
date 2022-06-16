@@ -16,7 +16,12 @@ export default function reducer(state = initialState, action) {
     case UPDATE_REVIEW:
       return {
         ...state,
-        reviews: [],
+        reviews: [
+          ...state.reviews,
+          {
+            review: action.payload,
+          },
+        ],
       };
 
     default:
